@@ -1,0 +1,160 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Solicitudes de Compra {% endblock %}
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/static/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/static/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Solicitudes de Compra</h1>
+
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active">Solicitudes de Compra</li>
+
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+
+            <div class="card">
+
+              <!-- /.card-header -->
+
+              <div class="card-body">
+
+                <a href="addSolicitud" class="btn btn-primary">Crear Solicitud</a>
+                <table id="TablaCapacitaciones" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                <th>Codigo</th>
+                <th>Solicitante</th>
+                <th>Centro de Costos</th>
+                <th>Descripcion</th>
+                <th>Estado</th>
+                <th>Fecha Solicitud</th>
+                <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                      {% for item in object %}
+                    <tr>
+
+                        <td>{{item.codigo}}</td>
+                        <td>{{item.solicita}}</td>
+                        <td>{{item.centro_costo}}</td>
+                        <td>{{item.descripcion}}</td>
+                        <td>{{item.estado}}</td>
+                        <td>{{item.fecha}}</td>
+
+                        <td>
+                          {% if item.autoriza ==  usuario and item.estado == 'Creada' %}
+
+                                      <button onclick="abrir_modal_edicion('{% url 'aprobarSolicitud' item.codigo %}')"  class ="btn btn-outline-danger btn-sm">Aprobar</button>
+                                    {% else %}
+
+                              {% endif %}
+                              {% if item.estado == 'Aprobado' %}
+                                          <a href="{% url 'generarOrden' item.id  %}" class = "btn btn-outline-danger btn-sm">Generar Orden</a>
+                                        {% else %}
+
+                                  {% endif %}
+                                          <a href="{% url 'viewSolicitud' item.id  %}" class = "btn btn-outline-primary btn-sm">Ver Solicitud</a>
+                                          <a href="{% url 'editarSolicitud' item.id  %}" class = "btn btn-outline-primary btn-sm">Editar Solicitud</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+
+                </table>
+                <div class="modal fade" id="aprobar" role = "dialog">
+
+
+</div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- DataTables -->
+  <script src="/static/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="/static/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="/static/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="/static/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/assets/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="/static/assets/js/demo.js"></script>
+  <!-- page script -->
+
+  <script>
+  $(document).ready( function () {
+    $('#TablaCapacitaciones').DataTable(
+      {
+        "language": {
+           "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+       }
+      }
+    );
+
+
+  });
+    </script>
+    <script type="text/javascript">
+      function abrir_modal_edicion(url){
+        $('#aprobar').load(url,function(){
+          $('#aprobar').modal('show');
+        });
+      }
+    </script>
+
+{% endblock javascripts %}
+
+{% block extrajs %}
+{% endblock extrajs %}

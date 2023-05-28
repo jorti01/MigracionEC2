@@ -1,0 +1,249 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Añadir Proveedor {% endblock %}
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} sidebar-mini {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Añadir Proveedor</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active">Añadir Proveedor</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+                        <form method="POST" class="post-form" enctype = multipart/form-data>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-sm-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Datos Empresa</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+
+                <div class="card-body">
+
+                      {% csrf_token %}
+                      <label for={{ label.form.nombre }}>Nombre/Razón Social:</label>
+
+                          {{ form.nombre }}
+                          <br>
+                          <label for={{ label.form.identificacion }}>Identificación:</label>
+
+                              {{ form.identificacion }}
+                              <br>
+
+                              <label for={{ label.form.telefono }}>Telefono:</label>
+
+                                  {{ form.telefono }}
+                                  <br>
+                                  <label for={{ label.form.ciudad }}>Ciudad:</label>
+
+                                      {{ form.ciudad }}
+                                      <br>
+                                      <label for={{ label.form.email }}>Email:</label>
+
+                                          {{ form.email }}
+                                          <br>
+
+                                          <label for={{ label.tipo_empresa }}>Tipo de Empresa:</label>
+
+                                          <select type="text" id="tipo_empresa" name="tipo_empresa">
+                                              <option selected>Persona Natural</option>
+                                              <option>Persona Juridica</option>
+                                          </select>
+                                              <br>
+                                              <label for={{ label.form.direccion }}>Dirección:</label>
+
+                                                  {{ form.direccion }}
+                                                  <br>
+
+                                                  <label for={{ label.tipo_identificacion }}>Tipo de Identificacion:</label>
+
+                                                  <select type="text" id="tipo_identificacion" name="tipo_identificacion">
+                                                      <option selected>NIT</option>
+                                                      <option>RUT</option>
+                                                      <option selected>Cedula Ciudadania</option>
+                                                      <option>Cedula Extranjeria</option>
+                                                      <option>Pasaporte</option>
+                                                  </select>                                                  <br>
+
+
+
+
+
+
+                <!-- /.card-body -->
+
+
+                                </div>
+            </div>
+            <!-- /.card -->
+
+
+
+
+
+
+              </div>
+              <div class="col-sm-6">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Persona Contacto</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+
+                    <div class="card-body">
+
+
+                        <label for={{ label.form.nombre_contacto }}>Nombre Completo:</label>
+
+                            {{ form.nombre_contacto }}
+                            <br>
+
+                            <label for={{ label.form.telefono_contacto }}>Teléfono:</label>
+
+                                {{ form.telefono_contacto }}
+                                <br>
+                                <label for={{ label.form.email_contacto }}>Email:</label>
+
+                                    {{ form.email_contacto }}
+                                    <br>
+                    <!-- /.card-body -->
+
+
+
+                                    </div>
+                </div>
+                <!-- /.card -->
+
+
+
+
+
+
+                  </div>
+              <!-- /.card-body -->
+
+            <!-- /.card -->
+          </div>
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Documentos Básicos</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+
+              <div class="card-body">
+
+                  <label for={{ label.form.sg_sst }}>sg_sst:</label>
+
+                      {{ form.sg_sst }}
+                      <br>
+                      <label for={{ label.form.iso_9001 }}>iso_9001:</label>
+
+                          {{ form.iso_9001 }}
+                          <br>
+                          <label for={{ label.form.iso_14001 }}>iso_14001:</label>
+
+                              {{ form.iso_14001 }}
+                              <br>
+
+                              <label for={{ label.form.ohsas_180001 }}>ohsas_180001:</label>
+
+                                  {{ form.ohsas_180001 }}
+                                  <br>
+
+                                  <label for={{ label.form.rut }}>rut:</label>
+
+                                      {{ form.rut }}
+                                      <br>
+                                      <label for={{ label.form.cedula_representante }}>cedula_representante:</label>
+
+                                          {{ form.cedula_representante }}
+                                          <br>
+                                          <label for={{ label.form.certificacion_comercial }}>certificacion_comercial:</label>
+
+                                              {{ form.certificacion_comercial }}
+                                              <br>
+                                              <label for={{ label.form.certificacion_bancaria }}>certificacion_bancaria:</label>
+
+                                                  {{ form.certificacion_bancaria }}
+                                                  <br>
+
+                                                  <input type="hidden" name="clasificacion" value="1" ><br />
+                                                  <input type="hidden" name="evaluacion" value="1" ><br />
+                                                  <input type="hidden" name="ultima_reevaluacion" value="1" ><br />
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+
+
+              <!-- /.card-body -->
+
+
+
+                              </div>
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+                    </form>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- bs-custom-file-input -->
+  <script src="/static/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/assets/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="/static/assets/js/demo.js"></script>
+  <script>
+  $(function () {
+    bsCustomFileInput.init();
+  });
+  </script>
+
+{% endblock javascripts %}

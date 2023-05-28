@@ -1,0 +1,173 @@
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <img src="/static/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">VIA</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="/static/assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="{% url 'logout' %}" class="d-block">
+            {{ request.user.username }} - Cerrar Sesion
+          </a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+
+          <li class="nav-item">
+            <a href="/ausentismo" class="nav-link">
+              <i class="nav-icon fas fa-check-square"></i>
+              <p>
+                Ausentismo
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/bitacoras" class="nav-link">
+              <i class="nav-icon fas fa-book-open"></i>
+              <p>
+                Bitacoras
+
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/capacitaciones" class="nav-link">
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
+              <p>
+                Capacitaciones
+
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/contratos" class="nav-link">
+              <i class="nav-icon fas fa-file-contract"></i>
+              <p>
+                Contratos
+
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/correspondencia" class="nav-link">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+                Correspondencia
+
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/documentacion" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Documentación
+
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/hojas-vida" class="nav-link">
+              <i class="nav-icon fas fa-file-upload"></i>
+              <p>
+                Hojas de Vida
+
+              </p>
+            </a>
+            <li class="nav-item">
+              <a href="/indicadores" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                  Indicadores
+
+                </p>
+              </a>
+            </li>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a href="/ordenes" class="nav-link">
+            <i class="nav-icon fas fa-shopping-cart"></i>
+            <p>
+              Ordenes de Compra
+
+            </p>
+          </a>
+        </li>
+      </li>
+      <li class="nav-item">
+        <a href="/proveedores" class="nav-link">
+          <i class="nav-icon fas fa-store-alt"></i>
+          <p>
+            Proveedores
+
+          </p>
+        </a>
+      </li>
+    </li>
+    <li class="nav-item">
+      <a href="/requerimientos" class="nav-link">
+        <i class="nav-icon fas fa-shopping-bag"></i>
+        <p>
+          Requerimientos Compra
+
+        </p>
+      </a>
+    </li>
+  </li>
+  <li class="nav-item">
+    <a href="/rotacion" class="nav-link">
+      <i class="nav-icon fas fa-users-cog"></i>
+      <p>
+        Rotación de Personal
+
+      </p>
+    </a>
+  </li>
+</li>
+<li class="nav-item">
+  <a href="/solicitud" class="nav-link">
+    <i class="nav-icon fas fa-money-check-alt"></i>
+    <p>
+      Solicitudes de Compra
+
+    </p>
+  </a>
+</li>
+</li>
+
+</li>
+<li class="nav-item">
+  <a href="/vehiculos" class="nav-link">
+    <i class="nav-icon fas fa-car"></i>
+    <p>
+      Vehículos
+
+    </p>
+  </a>
+</li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

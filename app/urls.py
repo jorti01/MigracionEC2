@@ -1,0 +1,95 @@
+# -*- encoding: utf-8 -*-
+"""
+Copyright (c) 2019 - present AppSeed.us
+"""
+
+
+
+from django.conf.urls.static import static
+from django.conf import settings
+from django.urls import path, re_path
+from app import views
+from django.contrib.auth import views as auth_views
+
+urlpatterns = [
+
+
+    path('', views.index, name='home'),
+    path('bitacoras',views.getBitacoras, name = "bitacoras"),
+    path('addBitacora', views.addBitacora),
+    path('eliminarBitacora/<id_elemento>',views.eliminarBitacora,name = 'eliminarBitacora'),
+    path('registroBitacora/<id_elemento>',views.registroBitacora,name = 'registroBitacora'),
+    path('addRegistroBitacora/<id_elemento>',views.addRegistroBitacora,name = 'addRegistroBitacora'),
+    path('capacitaciones',views.getCapacitaciones,name = 'capacitaciones'),
+    path('addCapacitacion', views.addCapacitacion),
+    path('eliminarCapacitacion/<id_elemento>',views.eliminarCapacitacion,name = 'eliminarCapacitacion'),
+    path('hojas-vida',views.getHojaVida,name = 'hojas-vida'),
+    path('addHojaVida', views.addHojaVida),
+    path('editarHojaVida/<id_elemento>',views.editarHojaVida,name = 'editarHojaVida'),
+    path('eliminarHojaVida/<id_elemento>',views.eliminarHojaVida,name = 'eliminarHojaVida'),
+    path('ausentismo',views.getAusentismo,name = 'ausentismo'),
+    path('ordenes',views.getOrdenCompra),
+    path('addOrden', views.addOrden),
+    path('proveedores',views.getProveedores),
+    path('addProveedor',views.addProveedores),
+    path('eliminarProveedor/<id_elemento>',views.eliminarProveedor,name = 'eliminarProveedor'),
+    path('editarProveedor/<id_elemento>',views.editarProveedor,name = 'editarProveedor'),
+    path('solicitud',views.getSolicitudes, name = 'solicitud'),
+    path('addSolicitud',views.addSolicitud),
+    path('aprobarSolicitud/<id_elemento>',views.aprobarSolicitud,name='aprobarSolicitud'),
+    path('contratos',views.getContratos),
+    path('addContrato',views.addContrato),
+    path('editarContrato/<id_elemento>',views.editarContrato,name = 'editarContrato'),
+    path('eliminarContrato/<id_elemento>',views.eliminarContrato,name = 'eliminarContrato'),
+    path('editarContrato/<id_elemento>',views.editarContrato,name = 'editarContrato'),
+    path('planTrabajo/<id_elemento>',views.planTrabajo,name = 'planTrabajo'),
+    path('addPlanTrabajo/<id_elemento>',views.addPlanTrabajo,name = 'addPlanTrabajo'),
+    path('productos',views.getProductos,name = 'productos'),
+    path('addProducto',views.addProducto),
+    path('temasCapacitacion',views.getTemasCapacitacion),
+    path('addTemaCapacitacion',views.addTema),
+    path('editarProducto/<id_elemento>',views.editarProducto,name = 'editarProducto'),
+    path('eliminarProducto/<id_elemento>',views.eliminarProducto,name = 'eliminarProducto'),
+    path('correspondencia',views.getCorrespondencia,name = 'correspondencia'),
+    path('addCorrespondencia',views.addCorrespondencia),
+    path('verCorrespondencia/<id_elemento>',views.verCorrespondencia,name ="verCorrespondencia"),
+    path('requerimientos',views.getRequerimiento,name = 'requerimientos'),
+    path('addRequerimiento',views.addRequerimiento),
+    path('generarSolicitud/<id>',views.generarSolicitud,name = 'generarSolicitud'),
+    path('getCentroCosto',views.getCentroCosto,name = 'getCentroCosto'),
+    path('addCentroCosto',views.addCentroCosto,name = 'addCentroCosto'),
+    path('generarOrden/<id>',views.generarOrden,name = 'generarOrden'),
+    path('viewSolicitud/<id>',views.viewSolicitud,name = 'viewSolicitud'),
+    path('editarSolicitud/<id>',views.editarSolicitud,name = 'editarSolicitud'),
+    path('enviarOrden/<id>',views.enviarOrden,name = 'enviarOrden'),
+    path('recibirOrden/<id>',views.recibirOrden,name = 'recibirOrden'),
+    path('evaluarOrden/<id>',views.evaluarOrden,name = 'evaluarOrden'),
+    path('categorias',views.getCategorias,name = 'categorias'),
+    path('addCategoria',views.addCategoria,name = 'addCategoria'),
+    path('editarCategoria/<id_elemento>',views.editarCategoria,name = 'editarCategoria'),
+    path('eliminarCategoria/<id_elemento>',views.eliminarCategoria,name = 'eliminarCategoria'),
+    path('evaluacionInicial/<id_elemento>',views.evaluacionInicial,name = 'evaluacionInicial'),
+    path('getSubcategorias/<id_elemento>',views.getSubcategorias,name = 'getSubcategorias'),
+    path('addSubcategoria',views.addSubcategoria,name = 'addSubcategoria'),
+    path('editarSubcategoria/<id_elemento>',views.editarSubcategoria,name = 'editarSubcategoria'),
+    path('eliminarSubcategoria/<id_elemento>',views.eliminarSubcategoria,name = 'eliminarSubcategoria'),
+    path('addAusentismo',views.addAusentismo,name = 'addAusentismo'),
+    path('documentosHoja/<id_elemento>',views.getDocumentosHojaVida,name = 'documentosHoja'),
+    path('addHojaDocumento/<id_elemento>',views.addDocumentoHojaVida,name = 'addHojaDocumento'),
+    path('addTTHH/<id_elemento>',views.addTTHojaVida,name = 'addTTHH'),
+    path('addHojaVidaDoc/<id_elemento>',views.addHojaVidaDoc,name = 'addHojaVidaDoc'),
+    path('addNomina/<id_elemento>',views.addNomina,name = 'addNomina'),
+    path('addSegSocial/<id_elemento>',views.addSegSocial,name = 'addSegSocial'),
+    path('addSegSalud/<id_elemento>',views.addSegSalud,name = 'addSegSalud'),
+    path('aprobarAusentismo/<id_elemento>',views.aprobarAusentismo,name = 'aprobarAusentismo'),
+    path('autorizarAusentismo/<id_elemento>',views.autorizarAusentismo,name = 'autorizarAusentismo'),
+    path('editarCapacitacion/<id_elemento>',views.editarCapacitacion,name = 'editarCapacitacion'),
+    path('verAusentismo/<id_elemento>',views.verAusentismo,name = 'verAusentismo'),
+    path('eliminarAusentismo/<id_elemento>',views.eliminarAusentismo,name = 'eliminarAusentismo'),
+    path('documentosTTHH/<id_elemento>',views.getTTHH,name = 'getTTHH'),
+    path('documentosSegSocial/<id_elemento>',views.getSegSocial,name = 'getSegSocial'),
+    path('documentosNomina/<id_elemento>',views.getNomina,name = 'getNomina'),
+    path('documentosHojaVida/<id_elemento>',views.getHojaVidaDoc,name = 'getHojaVidaDoc'),
+    path('documentosSegSalud/<id_elemento>',views.getSegSalud,name = 'getSegSalud'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

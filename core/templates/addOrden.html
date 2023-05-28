@@ -1,0 +1,143 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Añadir Orden de Compra {% endblock %}
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} sidebar-mini {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% endblock stylesheets %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Añadir Orden de Compra</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item active">Añadir Orden de Compra</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+          <!-- left column -->
+
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Datos Orden</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+
+                <div class="card-body">
+                  <form method="POST" class="post-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-row">
+                          <div class="form-group col-md-4 mb-0" multiple="multiple">
+                            {{ form.proveedor|as_crispy_field }}
+                          </div>
+
+                              </div>
+                                <div class="form-row">
+                          <div class="form-group col-md-6 mb-0">
+                            {{ form.centro_costo|as_crispy_field }}
+                          </div>
+                          <div class="form-group col-md-6 mb-0">
+                            {{ form.fecha|as_crispy_field }}
+                          </div>
+                                                      </div>
+
+                                                      <div class="form-row">
+                                                            <div class="form-group col-md-4 mb-0">
+                                                              {{ form.cotizacion|as_crispy_field }}
+                                                            </div>
+
+                                                                                        </div>
+                                                      </div>
+                      <div class="card card-primary">
+                  <div class="card-header">
+                  <h3 class="card-title">Detalles Compra</h3>
+                  </div>
+                  <div id = "forms">
+                              {{formset.management_form}}
+                             {% for form in formset.forms %}
+                            <div class = empty-form id = "producto-form">
+                                  {% crispy form helper %}
+                                    {{form.id}}
+                             </div>
+                             {% endfor %}
+                         </div>
+
+                                                         {% crispy form  %}
+
+                         </div>
+
+                                            </div>
+                <!-- /.card-body -->
+
+
+              </form>
+
+            </div>
+            <!-- /.card -->
+
+
+
+
+
+
+
+
+            <!-- /.card -->
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- bs-custom-file-input -->
+  <script src="/static/assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/assets/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="/static/assets/js/demo.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+{% endblock javascripts %}
